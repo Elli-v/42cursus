@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daelee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/11 18:03:34 by daelee            #+#    #+#             */
-/*   Updated: 2021/01/12 00:28:51 by soooh            ###   ########.fr       */
+/*   Created: 2021/01/15 15:21:09 by soooh             #+#    #+#             */
+/*   Updated: 2021/01/15 15:21:31 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -25,12 +25,12 @@
 #  define OPEN_MAX 32
 # endif
 
-int         get_next_line(int fd, char **line);
+int			get_next_line(int fd, char **line);
 
-size_t      ft_strlen(const char *str);
+size_t		ft_strlen(const char *str);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
-char        *ft_strdup(const char *src);
+char		*ft_strdup(const char *src);
 char		*ft_strjoin(char *s1, char *s2);
 
 #endif
