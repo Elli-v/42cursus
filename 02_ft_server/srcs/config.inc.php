@@ -15,6 +15,7 @@ declare(strict_types=1);
  * This is needed for cookie based authentication to encrypt password in
  * cookie. Needs to be 32 chars long.
  */
+/* phpmyadmin는 다른 사용자에게 제공되는 페이지 이므로, phpmyadmin에서 보내는 데이터들을 암호화 하기 위해, blowfish암호 화를 진행 */
 $cfg['blowfish_secret'] = '$2y$10$hSgsZbzMgkUD7L0IkBEiy.mSI1WQmN1R9AUIsI8ArYS6.ISS3Fg0W'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
 
 /**
