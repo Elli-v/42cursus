@@ -3,17 +3,29 @@ NAME			= cub3D
 CC				= gcc
 RM				= rm -rf
 CFLAGS		= -Wall -Wextra -Werror
-SFLAGS    = #-g3 -fsanitize=address
+SFLAGS    = -g3 -fsanitize=address
 MFLAGS		= -Lmlx -lmlx -framework OpenGL -framework AppKit
 INC_LINK 	= -I./utils/libft -I./srcs -I./utils/get_next_line
 
+MLX				= libmlx.a
+MLX_LIB		= ./mlx
 LIBFT 		= libft.a
 LIBFT_LIB = ./utils/libft
 
 SRCS			= ./srcs/cub3d.c\
-					./srcs/cub_init.c\
-					./srcs/cub_utils.c\
-					./srcs/cub_utils_texture.c\
+					./srcs/parse/cub_init.c\
+					./srcs/parse/cub_parse.c\
+					./srcs/parse/cub_parsing_e.c\
+					./srcs/parse/cub_utils_rgb.c\
+					./srcs/parse/cub_utils_texture.c\
+					./srcs/parse/cub_parsing_m.c\
+					./srcs/parse/cub_utils.c\
+					./srcs/parse/cub_map_convert_utils.c\
+					./srcs/parse/cub_map_utils.c\
+					./srcs/parse/cub_map_trim.c\
+					./srcs/parse/cub_map_validity.c\
+					./srcs/raycasting/ray_init.c\
+					./srcs/raycasting/ray_sprite.c\
 					./utils/get_next_line/get_next_line.c\
 					./utils/get_next_line/get_next_line_utils.c
 
@@ -21,10 +33,11 @@ OBJS			= $(SRCS:.c=.o)
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) libft
+$(NAME):		$(OBJS) $(MLX) libft
 	@cp $(LIBFT_LIB)/$(LIBFT) $(LIBFT)
-	@$(CC) -o $(NAME) $(CFLAGS) $(SFLAGS) $(INC_LINK) $(OBJS) $(LIBFT)
+	@$(CC) -o $(NAME) $(CFLAGS) $(MFLAGS) $(SFLAGS) $(INC_LINK) $(OBJS) $(LIBFT)
 	@$(RM) $(LIBFT)
+
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
