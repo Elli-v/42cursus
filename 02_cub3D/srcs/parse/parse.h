@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:17:00 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/14 02:55:50 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 18:11:13 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,10 @@ void				cub_free_char(int row, char **temp);
 */
 
 void				cub_resolution(char *line, t_ele *ele, t_bundle *bun);
-void				cub_texture(char *line, t_ele *ele, t_bundle *bun, int element);
+void				cub_texture(char *line, t_ele *ele, t_bundle *bun,
+								int element);
 void				cub_rgb(char *line, t_ele *ele, t_bundle *bun, int flag);
-int					parsing_e(char *line, t_ele *ele, t_bundle *bun);
+int					parsing_e(char *line, t_par *par);
 
 /*
 ** cub_parsing_m.c

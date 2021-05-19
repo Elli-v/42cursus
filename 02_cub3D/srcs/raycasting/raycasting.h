@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 23:25:56 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/14 03:05:50 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 18:32:32 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,37 @@
 # include "../../mlx/mlx.h"
 # include "../parse/parse.h"
 
-# define M_SPEED		0.49
-# define R_SPEED		0.49
+/*
+** keys
+*/
+# define X_EVENT_KEY_PRESS	2
+# define X_EVENT_MOTION		6
+# define X_EVENT_KEY_EXIT	17
+# define KEY_ESC			53
+# define KEY_W				13
+# define KEY_A				0
+# define KEY_S				1
+# define KEY_D				2
+# define KEY_ARROW_L		123
+# define KEY_ARROW_R		124
+
+# define M_SPEED		0.2
+# define R_SPEED		0.2
 # define PLANE			0.66
 
-enum	ele_tex
+# define FILE_HEADER_SIZE 14
+# define INFO_HEADER_SIZE 40
+# define BMP_BPP 24
+# define IMG_DEPTH 3
+# define T_BYTE char
+
+typedef struct	s_bmp
+{
+	T_BYTE	file_header[FILE_HEADER_SIZE];
+	T_BYTE	info_header[INFO_HEADER_SIZE];
+}				t_bmp;
+
+enum	e_tex_side
 {
 	T_NORTH,
 	T_SOUTH,
@@ -38,8 +64,22 @@ typedef struct	s_sprite
 {
 	int			x;
 	int			y;
-	int			texture;
+	double		vmove;
 }				t_sp;
+
+typedef struct	s_sprite_render
+{
+	double		transx;
+	double		transy;
+	int			screenx;
+	int			mscreen;
+	int			s_height;
+	int			drawsy;
+	int			drawey;
+	int			s_width;
+	int			drawsx;
+	int			drawex;
+}				t_sp_r;
 
 typedef struct	s_sp_bun
 {
@@ -47,7 +87,29 @@ typedef struct	s_sp_bun
 	double		*distance;
 	double		*zbuffer;
 	t_sp		*sp;
+	t_sp_r		sp_r;
 }				t_sp_bundle;
+
+typedef struct	s_raydir
+{
+	double		camerax;
+	double		raydirx;
+	double		raydiry;
+	double		side_dx;
+	double		side_dy;
+	double		delta_dx;
+	double		delta_dy;
+	double		pwall_d;
+	int			stepx;
+	int			stepy;
+	int			mapx;
+	int			mapy;
+	int			hit;
+	int			side;
+	int			lineheight;
+	int			drawstart;
+	int			drawend;
+}				t_raydir;
 
 typedef struct	s_img
 {
@@ -92,12 +154,20 @@ typedef struct	s_game
 	int			sp_total;
 	int			mouse_x;
 	int			mouse_y;
+	t_bmp		bmp;
 	t_sp_bundle	sp_bun;
+	t_raydir	ray;
 	t_img		img;
 	t_ray_tex	tex[T_TOTAL];
 	t_player	play;
-	t_bundle	bun;	
+	t_bundle	bun;
 }				t_game;
+int				ft_close(t_game *game);
+void			cub_capture(t_game *game);
+void			ray_bmp_init(t_game *game);
+int				ft_bmp_write(t_game *game);
+void			write_int(T_BYTE *color, unsigned param);
+void			ft_write_pixel(int fd, t_game *game);
 
 void			ray_dir_copy(t_par *par, t_game *game);
 void			ray_cub_copy(t_par *par, t_game *game, int argc);
@@ -107,5 +177,36 @@ void			ray_image_init(t_game *game);
 
 void			ray_sprite_init(t_game *game);
 void			ray_sprite(t_game *game);
+void			ray_sprite_render_buff(t_game *game, int k);
+void			ray_set_sprite_draw(t_game *game);
+void			ray_sort_sp(t_game *game);
+void			ray_draw_sp(t_game *game);
+
+void			ray_coloring(t_game *game);
+void			ray_set_up(t_game *game, int i);
+void			ray_set_side_step(t_game *game);
+void			ray_set_pwalldist(t_game *game);
+void			ray_set_drawstart_end(t_game *game);
+
+void			ray_draw_tex(t_game *game, int tex_x, int i, int tex_num);
+int				ray_set_tex_num(t_game *game);
+void			ray_set_tex(t_game *game, int i);
+
+void			ray_texture_free(t_game *game);
+void			ray_load_image(t_game *game, char *path, t_img *img);
+void			ray_load_texture(t_game *game);
+
+void			image_draw(t_game *game);
+void			ray_loop(t_game *game);
+
+void			ft_free_string(t_game *game);
+void			ft_free_all(t_game *game);
+void			ft_init_buf(t_game *game);
+
+int				ft_is_wallsprite(int a);
+void			key_w_s(int keycode, t_game *game);
+void			key_a_d(int keycode, t_game *game);
+void			key_l_r(int keycode, t_game *game);
+int				key_press(int keycode, t_game *game);
 
 #endif

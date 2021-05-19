@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 19:16:55 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/14 02:57:36 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 17:46:07 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
 int					*cub_map_stack2(t_map *mflag, int ***temp, int i, int pre)
 {

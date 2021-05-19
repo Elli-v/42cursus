@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 13:55:09 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/14 03:06:05 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 18:13:48 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-#include <stdio.h>
 
 void			ray_dir_copy(t_par *par, t_game *game)
 {
@@ -31,13 +30,13 @@ void			ray_dir_copy(t_par *par, t_game *game)
 	{
 		game->play.dirx = 0;
 		game->play.diry = 1;
-		game->play.planey = PLANE;
+		game->play.planex = PLANE;
 	}
 	else if (par->map.dir == WEST)
 	{
 		game->play.dirx = 0;
 		game->play.diry = -1;
-		game->play.planey = -PLANE;
+		game->play.planex = -PLANE;
 	}
 }
 
@@ -51,7 +50,7 @@ void			ray_cub_copy(t_par *par, t_game *game, int argc)
 	game->map = par->map.map;
 	game->play.x = par->map.x - 0.5;
 	game->play.y = par->map.y - 0.5;
-	ray_dir_copy(par,game);
+	ray_dir_copy(par, game);
 	game->bun = par->bun;
 	mlx_get_screen_size(game->mlx, &game->sizex, &game->sizey);
 	if (game->bun.r_width > game->sizey)
@@ -61,6 +60,7 @@ void			ray_cub_copy(t_par *par, t_game *game, int argc)
 	game->sp_total = par->map.sp_total;
 	game->mouse_x = 0;
 	game->mouse_y = 0;
+	ray_sprite(game);
 }
 
 void			ray_tex_init(t_game *game)
@@ -87,15 +87,18 @@ void			ray_window_init(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		cub_error("ERROR : Failed mlx !\n");
-	game->win = mlx_new_window(game->mlx, game->bun.r_width, game->bun.r_height, TITLE);
+	game->win = mlx_new_window(game->mlx, game->bun.r_width,
+			game->bun.r_height, TITLE);
 	if (!game->win)
 		cub_error("ERROR : Failed new window !\n");
 }
 
 void			ray_image_init(t_game *game)
 {
-	game->img.img = mlx_new_image;
+	game->img.img = mlx_new_image(game->mlx, game->bun.r_width,
+			game->bun.r_height);
 	if (!game->img.img)
 		cub_error("ERROR : Failed assign image\n");
-	game->img.data = (int *)mlx_get_data_addr(game->img.img, &game->img.bpp, &game->img.size_l, &game->img.endian);
+	game->img.data = (int *)mlx_get_data_addr(game->img.img,
+			&game->img.bpp, &game->img.size_l, &game->img.endian);
 }

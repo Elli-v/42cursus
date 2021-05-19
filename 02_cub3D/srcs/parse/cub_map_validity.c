@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:16:08 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/12 17:27:05 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 18:10:27 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
 int				cub_validity_check(int i, int j, t_map *mflag)
 {
@@ -43,12 +42,12 @@ char			**cub_map_malloc(t_map *mflag)
 	int			i;
 
 	i = -1;
-	cvisited = (char **)ft_calloc(sizeof(char *), (mflag->row + 2));
+	cvisited = (char **)calloc(sizeof(char *), (mflag->row + 2));
 	if (!cvisited)
 		return (NULL);
 	while (++i < mflag->row + 2)
 	{
-		cvisited[i] = (char *)ft_calloc(sizeof(char), mflag->col + 2);
+		cvisited[i] = (char *)calloc(sizeof(char), mflag->col + 2);
 		if (!cvisited[i])
 		{
 			cub_free_char(mflag->row + 2, mflag->cvisited);

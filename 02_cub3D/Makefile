@@ -13,6 +13,9 @@ LIBFT 		= libft.a
 LIBFT_LIB = ./utils/libft
 
 SRCS			= ./srcs/cub3d.c\
+					./srcs/cub_save.c\
+					./srcs/cub_key.c\
+					./srcs/cub_exit.c\
 					./srcs/parse/cub_init.c\
 					./srcs/parse/cub_parse.c\
 					./srcs/parse/cub_parsing_e.c\
@@ -24,8 +27,13 @@ SRCS			= ./srcs/cub3d.c\
 					./srcs/parse/cub_map_utils.c\
 					./srcs/parse/cub_map_trim.c\
 					./srcs/parse/cub_map_validity.c\
+					./srcs/raycasting/raycasting.c\
 					./srcs/raycasting/ray_init.c\
 					./srcs/raycasting/ray_sprite.c\
+					./srcs/raycasting/ray_draw_cf.c\
+					./srcs/raycasting/ray_draw_sprite.c\
+					./srcs/raycasting/ray_tex.c\
+					./srcs/raycasting/ray_load_texture.c\
 					./utils/get_next_line/get_next_line.c\
 					./utils/get_next_line/get_next_line_utils.c
 
@@ -51,6 +59,7 @@ libft:
 	@$(MAKE) -C $(LIBFT_LIB) all
 
 clean:
+	@$(MAKE) -C $(MLX_LIB) clean
 	@$(MAKE) -C $(LIBFT_LIB) clean
 	@$(RM) $(OBJS)
 

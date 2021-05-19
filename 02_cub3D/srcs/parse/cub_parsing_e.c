@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 13:11:41 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/12 19:08:02 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 17:46:15 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
 void			cub_resolution(char *line, t_ele *ele, t_bundle *bun)
 {
@@ -66,12 +65,12 @@ void			cub_rgb(char *line, t_ele *ele, t_bundle *bun, int flag)
 {
 	t_rgb		*rgb;
 	char		**temp;
-	int			e_flag;
+	int			*e_flag;
 
 	rgb = cub_rgb_flag(bun, flag);
-	e_flag = *cub_ele_flag(ele, flag);
+	e_flag = cub_ele_flag(ele, flag);
 	temp = ft_split(line, ',');
-	cub_rgb_error(&e_flag, temp);
+	cub_rgb_error(e_flag, temp);
 	cub_digit(temp);
 	rgb->r = ft_atoi(temp[0]);
 	cub_check_rgb(rgb->r);
@@ -82,9 +81,9 @@ void			cub_rgb(char *line, t_ele *ele, t_bundle *bun, int flag)
 	cub_free_char(3, temp);
 	if (temp)
 		free(temp);
-	e_flag = 1;
+	*e_flag = 1;
 	++ele->total;
-	rgb->color = (rgb->r * 256 * 256) + (rgb->b * 256) + (rgb->b);
+	rgb->color = (rgb->r * 256 * 256) + (rgb->g * 256) + rgb->b;
 }
 
 int				parsing_e_convert(char *line, t_ele *ele, t_bundle *bun)
@@ -110,7 +109,7 @@ int				parsing_e_convert(char *line, t_ele *ele, t_bundle *bun)
 	return (0);
 }
 
-int				parsing_e(char *line, t_ele *ele, t_bundle *bun)
+int				parsing_e(char *line, t_par *par)
 {
 	int			i;
 
@@ -119,12 +118,12 @@ int				parsing_e(char *line, t_ele *ele, t_bundle *bun)
 		++i;
 	if (ft_isalpha(line[i]))
 	{
-		if (parsing_e_convert(line + i, ele, bun))
+		if (parsing_e_convert(line + i, &par->ele, &par->bun))
 			return (-1);
 	}
 	else if (ft_isdigit(line[i]))
 	{
-		ele->map_start = 1;
+		par->ele.map_start = 1;
 		return (-1);
 	}
 	else if (i != (int)ft_strlen(line))

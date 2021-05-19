@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 03:10:23 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/12 18:46:20 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 17:46:11 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
 int				cub_strcmp(const char *str1, const char *str2)
 {
@@ -61,7 +60,7 @@ int				parse(t_par *par, int fd)
 	cub_binit(&par->bun);
 	element = 0;
 	while (!element && get_next_line(fd, &line) > 0)
-		element = parsing_e(line, &par->ele, &par->bun);
+		element = parsing_e(line, par);
 	cub_ele_total(par, &line, fd);
 	cub_map_init(&par->map);
 	if (par->ele.map_start)

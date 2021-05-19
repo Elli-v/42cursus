@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 14:48:55 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/14 03:04:08 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 18:17:34 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-#include <stdio.h>
 
 void			ray_sprite_init(t_game *game)
 {
@@ -55,7 +54,6 @@ void			ray_sprite(t_game *game)
 			{
 				game->sp_bun.sp[k].x = i;
 				game->sp_bun.sp[k].y = j;
-				game->sp_bun.sp[k].texture = T_SPRITE;
 				k++;
 			}
 		}

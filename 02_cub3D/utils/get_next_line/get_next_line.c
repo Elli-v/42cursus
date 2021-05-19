@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:25:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/01/12 00:08:18 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/18 18:59:13 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int					get_next_line(int fd, char **line)
 		return (-1);
 	while ((save_str = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		// printf("%s \n", buffer);
 		buffer[save_str] = '\0';
 		backup[fd] = gnl_strjoin(backup[fd], buffer);
 		if ((idx_num = find_n(backup[fd])) >= 0)

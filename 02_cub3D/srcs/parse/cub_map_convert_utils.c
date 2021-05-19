@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 19:11:10 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/12 18:02:16 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 17:52:56 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
 int				cub_map_convert_dir(t_map *mflag, int dir)
 {

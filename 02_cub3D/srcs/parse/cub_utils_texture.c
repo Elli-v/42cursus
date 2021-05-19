@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 00:17:15 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/12 18:42:20 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/19 17:53:10 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
 char			**cub_b_flag_connect(t_bundle *bun, int element)
 {
