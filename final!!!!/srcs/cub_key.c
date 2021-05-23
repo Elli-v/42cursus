@@ -6,16 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 17:05:25 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/19 18:34:34 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/23 22:43:21 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./raycasting/raycasting.h"
-
-int		ft_is_wallsprite(int a)
-{
-	return (a == WALL || a == SPRITE);
-}
 
 void	key_w_s(int keycode, t_game *game)
 {
@@ -96,7 +91,7 @@ int		key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
-		ft_free_all(game);
+		cub_free_all(game);
 		exit(0);
 	}
 	else if (keycode == KEY_W || keycode == KEY_S)

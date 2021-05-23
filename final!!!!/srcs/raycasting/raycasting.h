@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 23:25:56 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/19 18:32:32 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/23 22:58:10 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,51 +162,90 @@ typedef struct	s_game
 	t_player	play;
 	t_bundle	bun;
 }				t_game;
-int				ft_close(t_game *game);
+
+/*
+** cub3d.c
+*/
+void			ray_init_buf(t_game *game);
+int				main_loop(t_game *game);
+void			run_cub3d(t_game *game, int argc);
+int				main(int argc, char **argv);
+int				cub_close(t_game *game);
+
+/*
+** cub_save.c
+*/
 void			cub_capture(t_game *game);
 void			ray_bmp_init(t_game *game);
-int				ft_bmp_write(t_game *game);
+int				cub_bmp_write(t_game *game);
 void			write_int(T_BYTE *color, unsigned param);
-void			ft_write_pixel(int fd, t_game *game);
+void			cub_write_pixel(int fd, t_game *game);
 
+/*
+** cub_key.c
+*/
+void			key_w_s(int keycode, t_game *game);
+void			key_a_d(int keycode, t_game *game);
+void			key_l_r(int keycode, t_game *game);
+int				key_press(int keycode, t_game *game);
+
+/*
+** cub_exit.c
+*/
+void			cub_free_all(t_game *game);
+void			cub_init_buf(t_game *game);
+
+/*
+** ray_draw_cf.c
+*/
+void			ray_coloring(t_game *game);
+void			ray_set_up(t_game *game, int i);
+void			ray_set_side_step(t_game *game);
+void			ray_set_pwalldist(t_game *game);
+
+/*
+** ray_draw_sprite.c
+*/
+void			ray_sprite_render_buff(t_game *game, int k);
+void			ray_set_sprite_draw(t_game *game);
+void			ray_set_sprite(t_game *game, int o);
+void			ray_sort_sp(t_game *game);
+void			ray_draw_sp(t_game *game);
+
+/*
+** ray_init.c
+*/
 void			ray_dir_copy(t_par *par, t_game *game);
 void			ray_cub_copy(t_par *par, t_game *game, int argc);
 void			ray_tex_init(t_game *game);
 void			ray_window_init(t_game *game);
 void			ray_image_init(t_game *game);
 
-void			ray_sprite_init(t_game *game);
-void			ray_sprite(t_game *game);
-void			ray_sprite_render_buff(t_game *game, int k);
-void			ray_set_sprite_draw(t_game *game);
-void			ray_sort_sp(t_game *game);
-void			ray_draw_sp(t_game *game);
-
-void			ray_coloring(t_game *game);
-void			ray_set_up(t_game *game, int i);
-void			ray_set_side_step(t_game *game);
-void			ray_set_pwalldist(t_game *game);
-void			ray_set_drawstart_end(t_game *game);
-
-void			ray_draw_tex(t_game *game, int tex_x, int i, int tex_num);
-int				ray_set_tex_num(t_game *game);
-void			ray_set_tex(t_game *game, int i);
+/*
+** ray_load_texture.c
+*/
 
 void			ray_texture_free(t_game *game);
 void			ray_load_image(t_game *game, char *path, t_img *img);
 void			ray_load_texture(t_game *game);
 
+/*
+** ray_sprite.c
+*/
+void			ray_sprite_init(t_game *game);
+void			ray_sprite(t_game *game);
+
+/*
+** ray_tex.c
+*/
+void			ray_set_drawstart_end(t_game *game);
+void			ray_draw_tex(t_game *game, int tex_x, int i, int tex_num);
+int				ray_set_tex_num(t_game *game);
+void			ray_set_tex(t_game *game, int i);
+
+/*
+** raycasting.c
+*/
 void			image_draw(t_game *game);
 void			ray_loop(t_game *game);
-
-void			ft_free_string(t_game *game);
-void			ft_free_all(t_game *game);
-void			ft_init_buf(t_game *game);
-
-int				ft_is_wallsprite(int a);
-void			key_w_s(int keycode, t_game *game);
-void			key_a_d(int keycode, t_game *game);
-void			key_l_r(int keycode, t_game *game);
-int				key_press(int keycode, t_game *game);
-
 #endif

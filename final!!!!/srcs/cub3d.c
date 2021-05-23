@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 15:24:20 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/23 21:27:32 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/23 22:47:07 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			run_cub3d(t_game *game, int argc)
 	{
 		mlx_loop_hook(game->mlx, &main_loop, game);
 		mlx_hook(game->win, X_EVENT_KEY_PRESS, 1L << 0, &key_press, game);
-		mlx_hook(game->win, X_EVENT_KEY_EXIT, 1L << 5, &ft_close, game);
+		mlx_hook(game->win, X_EVENT_KEY_EXIT, 1L << 5, &cub_close, game);
 		mlx_loop(game->mlx);
 	}
 }
@@ -73,8 +73,8 @@ int				main(int argc, char **argv)
 	return (0);
 }
 
-int				ft_close(t_game *game)
+int				cub_close(t_game *game)
 {
-	ft_free_all(game);
+	cub_free_all(game);
 	exit(0);
 }

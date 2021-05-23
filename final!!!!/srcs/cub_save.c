@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 16:53:44 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/22 00:04:16 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/23 22:58:26 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void			cub_capture(t_game *game)
 	ray_draw_sp(game);
 	image_draw(game);
 	ray_bmp_init(game);
-	if (!ft_bmp_write(game))
+	if (!cub_bmp_write(game))
 	{
 		mlx_destroy_image(game->mlx, game->img.img);
-		ft_init_buf(game);
+		cub_init_buf(game);
 		cub_error("Failed to save image\n");
 	}
 	mlx_destroy_image(game->mlx, game->img.img);
-	ft_init_buf(game);
+	cub_init_buf(game);
 }
 
 void			ray_bmp_init(t_game *game)
@@ -57,7 +57,7 @@ void			ray_bmp_init(t_game *game)
 	game->bmp.info_header[14] = (unsigned char)(BMP_BPP);
 }
 
-int				ft_bmp_write(t_game *game)
+int				cub_bmp_write(t_game *game)
 {
 	int			fd;
 
@@ -69,7 +69,7 @@ int				ft_bmp_write(t_game *game)
 	}
 	write(fd, game->bmp.file_header, FILE_HEADER_SIZE);
 	write(fd, game->bmp.info_header, INFO_HEADER_SIZE);
-	ft_write_pixel(fd, game);
+	cub_write_pixel(fd, game);
 	close(fd);
 	return (1);
 }
@@ -81,7 +81,7 @@ void			write_int(T_BYTE *color, unsigned param)
 	color[2] = (param >> 16);
 }
 
-void			ft_write_pixel(int fd, t_game *game)
+void			cub_write_pixel(int fd, t_game *game)
 {
 	int			i;
 	int			j;
