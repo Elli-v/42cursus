@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 16:10:51 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/27 20:39:39 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/29 16:43:50 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define INT_MAX	2147483647
 //INT_MIN = -INT_MAX -1
 
-typedef struct	s_node
+typedef struct		s_node
 {
 	struct s_node	*prev;
 	struct s_node	*next;
@@ -30,10 +30,17 @@ typedef struct	s_node
 
 typedef struct		s_stack
 {
-	void			*head;
-	void			*tail;
+	t_node			*head;
+	t_node			*tail;
 	int				total;
 }					t_stack;
+
+
+/*
+** ps_init.c
+*/
+t_stack				*init_stack(void);
+t_node				*init_node(void);
 
 /*
 ** ps_utils.c
@@ -41,5 +48,18 @@ typedef struct		s_stack
 void				ps_putstr(char *s);
 void				ps_error(char *text);
 int					ps_atoi(const char *str);
+
+/*
+** ps_node.c
+*/
+void				connect_node(t_node *temp, t_node **node, t_stack *a);
+int					make_node(char *argv, t_node **node, t_stack *a);
+void				duplicate_data(t_node *node);
+void				set_stack(int argc, char **argv, t_stack *a);
+
+/*
+** push_swap.c
+*/
+int					main(int argc, char **argv);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 15:24:05 by soooh             #+#    #+#              #
-#    Updated: 2021/05/26 19:35:19 by soooh            ###   ########.fr        #
+#    Updated: 2021/05/29 14:17:13 by soooh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME			= push_swap
 CC				= gcc
 RM				= rm -rf
 SRCS			= ./srcs/push_swap.c\
-					./srcs/ps_utils.c
+					./srcs/ps_utils.c\
+					./srcs/ps_init.c\
+					./srcs/ps_node.c
 
 CFLAGS			= -Wall -Wextra -Werror
 
