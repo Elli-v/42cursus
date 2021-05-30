@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_push_and_pop.c                                  :+:      :+:    :+:   */
+/*   ps_push_pop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 18:03:04 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/30 18:03:24 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/31 01:53:42 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void				reverse_rotate_stack(t_stack *stack)
+void				reverse_rotate_stack(t_stack *stack, int flag)
 {
 	t_node			*temp;
 
@@ -25,9 +25,13 @@ void				reverse_rotate_stack(t_stack *stack)
 	stack->head = temp;
 	stack->tail->next = NULL;
 	temp->prev = NULL;
+	if (flag == A)
+		ps_putendl_fd("rra", 1);
+	else if (flag == B)
+		ps_putendl_fd("rrb", 1);
 }
 
-void				rotate_stack(t_stack *stack)
+void				rotate_stack(t_stack *stack, int flag)
 {
 	t_node			*temp;
 
@@ -40,9 +44,13 @@ void				rotate_stack(t_stack *stack)
 	stack->tail = temp;
 	stack->head->prev = NULL;
 	stack->tail->next = NULL;
+	if (flag == A)
+		ps_putendl_fd("ra", 1);
+	else if (flag == B)
+		ps_putendl_fd("rb", 1);
 }
 
-void				swap_stack(t_stack *stack)
+void				swap_stack(t_stack *stack, int flag)
 {
 	t_node			*temp;
 	t_node			*post_head;
@@ -58,25 +66,30 @@ void				swap_stack(t_stack *stack)
 	temp->prev = stack->head;
 	if (stack->total == 2)
 		stack->tail = stack->head->next;
+	if (flag == A)
+		ps_putendl_fd("sa", 1);
+	else if (flag == B)
+		ps_putendl_fd("sb", 1);
 }
 
 void				push_stack_one(t_stack *from, t_stack *to)
 {
 	if (to->total == 0)
-		{
-			to->head = from->head;
-			to->tail = to->head;
-		}
-		else
-		{
-			to->head->prev = from->head;
-			from->head->next = to->head;
-			to->head = to->head->prev;
-		}
-		from->head = NULL;
-		from->tail = NULL;
+	{
+		to->head = from->head;
+		to->tail = to->head;
+	}
+	else
+	{
+		to->head->prev = from->head;
+		from->head->next = to->head;
+		to->head = to->head->prev;
+	}
+	from->head = NULL;
+	from->tail = NULL;
 }
-void				push_stack(t_stack *from, t_stack *to)
+
+void				push_stack(t_stack *from, t_stack *to, int flag)
 {
 	if (from->total == 1)
 		push_stack_one(from, to);
@@ -96,4 +109,10 @@ void				push_stack(t_stack *from, t_stack *to)
 		to->head->prev->next = to->head;
 		to->head = to->head->prev;
 	}
+	to->total++;
+	from->total--;
+	if (flag == A)
+		ps_putendl_fd("pa", 1);
+	else if (flag == B)
+		ps_putendl_fd("pb", 1);
 }

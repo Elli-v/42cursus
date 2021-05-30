@@ -6,7 +6,7 @@
 #    By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 15:24:05 by soooh             #+#    #+#              #
-#    Updated: 2021/05/30 14:41:28 by soooh            ###   ########.fr        #
+#    Updated: 2021/05/31 01:54:43 by soooh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ RM				= rm -rf
 SRCS			= ./srcs/push_swap.c\
 					./srcs/ps_utils.c\
 					./srcs/ps_init.c\
-					./srcs/ps_linked.c
+					./srcs/ps_linked.c\
+					./srcs/ps_push_pop.c\
+					./srcs/ps_double.c
 
 CFLAGS			= -Wall -Wextra -Werror
 

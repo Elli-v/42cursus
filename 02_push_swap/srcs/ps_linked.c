@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 14:15:42 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/30 17:25:21 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/31 02:08:06 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int					make_node(char *argv, t_node **node, t_stack *a)
 	temp->data = ps_atoi(argv);
 	// printf("argc = %d\n", temp->data);
 	connect_node(temp, node, a);
+	a->total++;
 	return (1);
 }
 
@@ -78,7 +79,6 @@ void				set_stack(int argc, char **argv, t_stack *a)
 		stack = make_node(argv[i], &node, a);
 		if (!stack)
 			ps_error(BASIC);
-		a->total++;
 	}
 	temp = a->head;
 	while (temp)
@@ -86,11 +86,11 @@ void				set_stack(int argc, char **argv, t_stack *a)
 		// printf("temp = %d\n", temp->data);
 		temp = temp->next;
 	}
-	printf("head = %d\n", ((t_node *)a->head)->data);
+	// printf("head = %d\n", ((t_node *)a->head)->data);
 	if (node->next == NULL)
 		a->tail = node;
-	printf("tail = %d\n", ((t_node *)a->tail)->data);
-	printf("total = %d\n", (a->total));
+	// printf("tail = %d\n", ((t_node *)a->tail)->data);
+	// printf("total = %d\n", (a->total));
 	while(node->prev)
 		node = node->prev;
 	// printf("head->next->data = %d\n", ((t_node *)a->head)->next->data);

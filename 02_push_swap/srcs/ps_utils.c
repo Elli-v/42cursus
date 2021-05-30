@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 20:41:10 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/30 17:25:39 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/31 02:08:20 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void			ps_putendl_fd(char *s, int fd)
 
 void			ps_error(int flag)
 {
-	// ps_putstr(text);
-	// exit(0);
 	if (flag == BASIC)
 		ps_putendl_fd("ERROR !", 1);
 	else if (flag == INT_RANGE)
