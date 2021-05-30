@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 14:15:42 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/29 16:43:37 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/30 17:25:21 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void				duplicate_data(t_node *node)
 		while (temp)
 		{
 			if (temp->data == data)
-				ps_error("응~ 값 중복~\n");
+				ps_error(SAME_NUM);
 			if (temp->next)
 				temp = temp->next;
 			else
@@ -77,7 +77,7 @@ void				set_stack(int argc, char **argv, t_stack *a)
 	{
 		stack = make_node(argv[i], &node, a);
 		if (!stack)
-			ps_error("ERROR !\n");
+			ps_error(BASIC);
 		a->total++;
 	}
 	temp = a->head;

@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 16:10:51 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/29 16:43:50 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/30 17:24:17 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 
 # define INT_MAX	2147483647
 //INT_MIN = -INT_MAX -1
+
+# define BASIC	100
+# define INT_RANGE	101
+# define MALLOC_ERR	102
+# define NO_NUM	103
+# define SAME_NUM	104
 
 typedef struct		s_node
 {
@@ -45,8 +51,8 @@ t_node				*init_node(void);
 /*
 ** ps_utils.c
 */
-void				ps_putstr(char *s);
-void				ps_error(char *text);
+void				ps_putendl_fd(char *s, int fd);
+void				ps_error(int flag);
 int					ps_atoi(const char *str);
 
 /*

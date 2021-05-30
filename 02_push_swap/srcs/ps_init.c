@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:12:40 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/28 19:12:48 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/30 17:27:59 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_stack			*init_stack(void)
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (!stack)
-		return(NULL);
+		ps_error(MALLOC_ERR);
 	stack->head = NULL;
 	stack->tail = NULL;
 	stack->total = 0;
@@ -31,7 +31,7 @@ t_node			*init_node(void)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		return (NULL);
+		ps_error(MALLOC_ERR);
 	node->prev = NULL;
 	node->next = NULL;
 	node->data = 0;
