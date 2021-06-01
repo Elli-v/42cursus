@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:12:40 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/30 17:27:59 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/01 18:43:20 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ t_node			*init_node(void)
 	node->prev = NULL;
 	node->next = NULL;
 	node->data = 0;
+	node->index = 0;
 	return (node);
 }

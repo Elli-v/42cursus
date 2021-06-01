@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 16:10:51 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/31 02:08:31 by soooh            ###   ########.fr       */
+/*   Updated: 2021/05/31 02:40:01 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_node
 	struct s_node	*prev;
 	struct s_node	*next;
 	int				data;
+	int				index;
 }					t_node;
 
 typedef struct		s_stack
