@@ -1,12 +1,15 @@
-R 100 50
+
+
+
+
+
+R 100 500
 NO textures/wall_n.xpm
-
-
 SO textures/wall_s.xpm
 WE textures/wall_w.xpm
 EA textures/wall_e.xpm
 S textures/pillar.xpm
-F 255, 255, 255
+F 44, 97, 21,,,
 C 51, 198, 1
 
         1111111111111111111111111

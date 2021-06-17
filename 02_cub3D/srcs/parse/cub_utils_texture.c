@@ -6,13 +6,13 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 00:17:15 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/22 00:12:10 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/09 16:15:29 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-char			**cub_b_flag_connect(t_bundle *bun, int element)
+char **cub_b_flag_connect(t_bundle *bun, int element)
 {
 	if (element == NORTH)
 		return (&bun->no);
@@ -26,7 +26,7 @@ char			**cub_b_flag_connect(t_bundle *bun, int element)
 		return (&bun->sp);
 }
 
-int				*cub_e_flag_connect(t_ele *ele, int element)
+int *cub_e_flag_connect(t_ele *ele, int element)
 {
 	if (element == NORTH)
 		return (&ele->no);
@@ -40,11 +40,11 @@ int				*cub_e_flag_connect(t_ele *ele, int element)
 		return (&ele->s);
 }
 
-char			*cub_tex_filepath(const char *str)
+char *cub_tex_filepath(const char *str)
 {
-	char		*temp;
-	int			i;
-	int			len;
+	char *temp;
+	int i;
+	int len;
 
 	len = 0;
 	while (str[len] != '\0' && str[len] != '\r')
@@ -58,10 +58,10 @@ char			*cub_tex_filepath(const char *str)
 	return (temp);
 }
 
-void			cub_extention(char *temp, char *ext, int cub)
+void cub_extention(char *temp, char *ext, int cub)
 {
-	char		*str;
-	int			i;
+	char *str;
+	int i;
 
 	str = ft_strrchr(temp, '.');
 	if (!str)
@@ -79,7 +79,7 @@ void			cub_extention(char *temp, char *ext, int cub)
 	}
 }
 
-void			cub_ele_total(t_par *par, char **line, int fd)
+void cub_ele_total(t_par *par, char **line, int fd)
 {
 	if (par->ele.total > TOTAL_E)
 	{

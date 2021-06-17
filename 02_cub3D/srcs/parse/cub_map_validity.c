@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:16:08 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/23 18:27:25 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:20:05 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
 int				cub_validity_check(int i, int j, t_map *mflag)
 {

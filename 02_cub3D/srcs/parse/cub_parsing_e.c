@@ -6,16 +6,15 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 13:11:41 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/23 21:21:18 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:20:07 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
-void			cub_resolution(char *line, t_ele *ele, t_bundle *bun)
+void cub_resolution(char *line, t_ele *ele, t_bundle *bun)
 {
-	char		**temp;
+	char **temp;
 
 	temp = ft_split(line, ' ');
 	if (ele->r)
@@ -41,11 +40,11 @@ void			cub_resolution(char *line, t_ele *ele, t_bundle *bun)
 	++ele->total;
 }
 
-void			cub_texture(char *line, t_ele *ele, t_bundle *bun, int element)
+void cub_texture(char *line, t_ele *ele, t_bundle *bun, int element)
 {
-	char		**cub;
-	char		**temp;
-	int			*flag;
+	char **cub;
+	char **temp;
+	int *flag;
 
 	cub = cub_b_flag_connect(bun, element);
 	flag = cub_e_flag_connect(ele, element);
@@ -68,15 +67,17 @@ void			cub_texture(char *line, t_ele *ele, t_bundle *bun, int element)
 	++ele->total;
 }
 
-void			cub_rgb(char *line, t_ele *ele, t_bundle *bun, int flag)
+void cub_rgb(char *line, t_ele *ele, t_bundle *bun, int flag)
 {
-	t_rgb		*rgb;
-	char		**temp;
-	int			*e_flag;
+	t_rgb *rgb;
+	char **temp;
+	int *e_flag;
 
 	rgb = cub_rgb_flag(bun, flag);
 	e_flag = cub_ele_flag(ele, flag);
 	temp = ft_split(line, ',');
+	if (temp == NULL)
+		cub_error("error!\n");
 	cub_rgb_error(e_flag, temp);
 	cub_digit(temp);
 	rgb->r = ft_atoi_rgb(temp[0]);
@@ -92,7 +93,7 @@ void			cub_rgb(char *line, t_ele *ele, t_bundle *bun, int flag)
 	rgb->color = (rgb->r * 256 * 256) + (rgb->g * 256) + rgb->b;
 }
 
-int				parsing_e_convert(char *line, t_ele *ele, t_bundle *bun)
+int parsing_e_convert(char *line, t_ele *ele, t_bundle *bun)
 {
 	if (ft_strlen(line) < 2)
 		return (0);
@@ -117,13 +118,13 @@ int				parsing_e_convert(char *line, t_ele *ele, t_bundle *bun)
 	return (0);
 }
 
-int				parsing_e(char *line, t_par *par)
+int parsing_e(char *line, t_par *par)
 {
-	int			i;
+	int i;
 
 	i = 0;
 	while (cub_space(line[i]))
-		++i;
+		i++;
 	if (ft_isalpha(line[i]))
 		parsing_e_convert(line + i, &par->ele, &par->bun);
 	else if (ft_isdigit(line[i]))

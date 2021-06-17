@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 19:48:01 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/23 20:29:07 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:21:02 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int			ft_check(const char *set, const char letter)
 {

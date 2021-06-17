@@ -6,12 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 19:08:22 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/23 17:36:41 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:20:02 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include "stdio.h"
 
 void			cub_free_map(int **map, int row)
 {

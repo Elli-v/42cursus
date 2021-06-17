@@ -6,16 +6,15 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:25:36 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/23 18:27:44 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:20:20 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-int					find_n(char *backup, int flag)
+int find_n(char *backup, int flag)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (backup[i])
@@ -36,10 +35,10 @@ int					find_n(char *backup, int flag)
 	return (-1);
 }
 
-int					div_line(char **backup, char **line, int idx_num)
+int div_line(char **backup, char **line, int idx_num)
 {
-	char		*temp;
-	int			len;
+	char *temp;
+	int len;
 
 	(*backup)[idx_num] = '\0';
 	*line = gnl_strdup(*backup);
@@ -56,11 +55,11 @@ int					div_line(char **backup, char **line, int idx_num)
 	return (1);
 }
 
-int					onandon(char **backup, char **line, int save_str, int flag)
+int onandon(char **backup, char **line, int save_str, int flag)
 {
-	int		idx_num;
+	int idx_num;
 
-	if (save_str < 0)
+	if (save_str < 0 || !backup)
 		return (-1);
 	if (*backup && (idx_num = find_n(*backup, flag)) >= 0)
 		return (div_line(backup, line, idx_num));
@@ -71,15 +70,16 @@ int					onandon(char **backup, char **line, int save_str, int flag)
 		return (0);
 	}
 	*line = gnl_strdup("");
+
 	return (0);
 }
 
-int					get_next_line(int fd, char **line, int flag)
+int get_next_line(int fd, char **line, int flag)
 {
-	char			buffer[BUFFER_SIZE + 1];
-	static char		*backup[OPEN_MAX];
-	int				save_str;
-	int				idx_num;
+	char buffer[BUFFER_SIZE + 1];
+	static char *backup[OPEN_MAX];
+	int save_str;
+	int idx_num;
 
 	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
 		return (-1);

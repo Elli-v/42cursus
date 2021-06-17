@@ -3,7 +3,7 @@ NAME			= cub3D
 CC				= gcc
 RM				= rm -rf
 CFLAGS		= -Wall -Wextra -Werror
-SFLAGS    = #-g3 -fsanitize=address
+SFLAGS    = -fsanitize=address
 MFLAGS		= -Lmlx -lmlx -framework OpenGL -framework AppKit
 INC_LINK 	= -I./utils/libft -I./srcs -I./utils/get_next_line
 

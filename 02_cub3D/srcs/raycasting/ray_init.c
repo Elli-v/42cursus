@@ -6,13 +6,11 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 13:55:09 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/23 18:27:39 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:20:17 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-#include <stdio.h>
-
 void			ray_dir_copy(t_par *par, t_game *game)
 {
 	if (par->map.dir == NORTH)

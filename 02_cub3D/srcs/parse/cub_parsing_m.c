@@ -6,17 +6,16 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 19:16:55 by soooh             #+#    #+#             */
-/*   Updated: 2021/05/23 18:33:05 by soooh            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:20:09 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h>
 
-int					*cub_map_stack2(t_map *mflag, int ***temp, int i, int pre)
+int *cub_map_stack2(t_map *mflag, int ***temp, int i, int pre)
 {
-	int				*tennp;
-	int				j;
+	int *tennp;
+	int j;
 
 	tennp = (int *)ft_calloc(sizeof(int), (mflag->col));
 	if (!tennp)
@@ -35,10 +34,10 @@ int					*cub_map_stack2(t_map *mflag, int ***temp, int i, int pre)
 	return (tennp);
 }
 
-int					**cub_map_stack(char *line, t_map *mflag, int pre)
+int **cub_map_stack(char *line, t_map *mflag, int pre)
 {
-	int				**temp;
-	int				i;
+	int **temp;
+	int i;
 
 	i = -1;
 	temp = (int **)malloc(sizeof(int *) * (mflag->row));
@@ -50,11 +49,11 @@ int					**cub_map_stack(char *line, t_map *mflag, int pre)
 	return (temp);
 }
 
-int					cub_map_check(char *line, t_map *mflag)
+int cub_map_check(char *line, t_map *mflag)
 {
-	int				i;
-	int				len;
-	int				pre;
+	int i;
+	int len;
+	int pre;
 
 	i = 0;
 	len = ft_strlen(line);
@@ -72,10 +71,10 @@ int					cub_map_check(char *line, t_map *mflag)
 	return (pre);
 }
 
-void				parsing_m(char *line, t_map *mflag)
+void parsing_m(char *line, t_map *mflag)
 {
-	int				**temp;
-	int				pre;
+	int **temp;
+	int pre;
 
 	if (ft_strlen(line) < 2)
 	{
